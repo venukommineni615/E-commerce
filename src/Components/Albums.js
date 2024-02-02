@@ -1,5 +1,6 @@
-import React from 'react'
-import {Card, Container, Row, Col, Button} from 'react-bootstrap'
+import React, { useContext } from 'react'
+import {Card, Container, Row, Col, Button, Stack} from 'react-bootstrap'
+import CartContext from '../store/CartContext'
 const productsArr = [
 
     {
@@ -44,6 +45,12 @@ const productsArr = [
     
     ]
 const Albums = () => {
+    const cartCtx=useContext(CartContext)
+    const addItem=(item)=>{
+        cartCtx.addItem({
+            ...item,
+        })
+    }
   return (
     <>
     <Card xs={12} className='bg-secondary rounded-0'>
@@ -60,9 +67,10 @@ const Albums = () => {
                 return<Col xs={6} key={item.title} className='mb-4 p-4'>
                     <Card className='mx-auto bg-transparent' style={{ width: '18rem' }}>
                     <Card.Header className='text-center fs-5 fw-medium bg-transparent'>{item.title}</Card.Header>
-                        <Card.Img variant="top" src={item.imageUrl} className='rounded-0'></Card.Img>
-                        <Card.Body>
-                            <Card.Text>$ {item.price}</Card.Text>
+                        <Card.Img variant="top" src={item.imageUrl} className="rounded-0" ></Card.Img>
+                        <Card.Body as={Stack} direction="horizontal" gap={3}>
+                            <Card.Text className=''>$ {item.price}</Card.Text>
+                            <Button variant="info" className='ms-auto' onClick={addItem.bind(null,item)}>Add to cart</Button>
                         </Card.Body>
                     </Card>
                 </Col>

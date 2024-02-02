@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import { Col, Row } from 'react-bootstrap';
+import CartContext from '../store/CartContext';
 const Header = (props) => {
+    const cartCtx=useContext(CartContext)
     return (
         <Navbar expand="lg" className="bg-dark text-light ">
           <Container fluid className='mx-0'>
@@ -16,7 +18,7 @@ const Header = (props) => {
                 <Nav.Link href="#store" className='text-light'>Store</Nav.Link>
                 <Nav.Link href="#about" className='text-light me-auto'>About</Nav.Link>
               </Nav>
-                <Button onClick={props.show} as={Col} xs={1} variant='secondary' className='text-white fw-medium ms-auto me-0'>Cart</Button>
+                <Button onClick={props.show} as={Col} xs={1} variant='secondary' className='text-white fw-medium ms-auto me-0'>Cart {cartCtx.amount}</Button>
             </Navbar.Collapse>
           </Container>
         </Navbar>

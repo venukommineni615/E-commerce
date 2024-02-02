@@ -3,6 +3,7 @@ import Header from './Components/Header';
 import Albums from './Components/Albums';
 import Cart from './Components/Cart'
 import { useState } from 'react';
+import CartProvider from './store/CartProvider';
 
 function App() {
   const [toggleCart,setToggleCart]=useState(false)
@@ -17,11 +18,11 @@ function App() {
     })
   }
   return (
-    <div className="App">
+    <CartProvider>
       <Header show={show}></Header>
       <Albums></Albums>
       <Cart show={toggleCart} handleClose={close}></Cart>
-    </div>
+    </CartProvider>
   )
      
 }

@@ -1,47 +1,50 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Offcanvas, Table, Image, Button } from 'react-bootstrap'
-const cartElements = [
+import CartContext from '../store/CartContext'
+// const cartElements = [
 
-    {
+//     {
     
-    title: 'Colors',
+//     title: 'Colors',
     
-    price: 100,
+//     price: 100,
     
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
+//     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
     
-    quantity: 2,
+//     quantity: 2,
     
-    },
+//     },
     
-    {
+//     {
     
-    title: 'Black and white Colors',
+//     title: 'Black and white Colors',
     
-    price: 50,
+//     price: 50,
     
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
+//     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
     
-    quantity: 3,
+//     quantity: 3,
     
-    },
+//     },
     
-    {
+//     {
     
-    title: 'Yellow and Black Colors',
+//     title: 'Yellow and Black Colors',
     
-    price: 70,
+//     price: 70,
     
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
+//     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
     
-    quantity: 1,
+//     quantity: 1,
     
-    }
+//     }
     
-    ]
+//     ]
     
     
 const Cart = (props) => {
+    const cartCtx=useContext(CartContext)
+
   return (
     <>
         <Offcanvas show={props.show} onHide={props.handleClose} placement='end' className='w-auto'>
@@ -58,12 +61,12 @@ const Cart = (props) => {
         </tr>
       </thead>
       <tbody>
-        {cartElements.map((item)=>{
+        {cartCtx.items.map((item)=>{
             return (
-                <tr>
+                <tr key={item.title}>
           <td ><Image src={item.imageUrl} thumbnail style={{ width: '5rem', height: '5rem' }}/> {item.title}</td>
           <td>{item.price}</td>
-          <td><p>{item.quantity}</p><Button variant='danger'>Remove</Button></td>
+          <td ><p className='d-inline me-2 border border-2 p-1 rounded border-secondary-subtle' >{item.quantity}</p><Button variant='danger'>Remove</Button></td>
         </tr>
             )
         })}
