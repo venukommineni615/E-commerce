@@ -7,9 +7,11 @@ import './App.css';
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import Store from './pages/Store';
 import About from './Components/About';
+import Home from './pages/Home';
 const router=createBrowserRouter([
   {path:'/',element:<Store></Store>},
-  {path:'/about', element:<About></About>}
+  {path:'/about', element:<About></About>},
+  {path:'/home', element:<Home></Home>}
 ])
 
 function App() {
