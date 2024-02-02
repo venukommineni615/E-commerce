@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import { Col, Row } from 'react-bootstrap';
 import CartContext from '../store/CartContext';
+import { Link } from 'react-router-dom';
 const Header = (props) => {
     const cartCtx=useContext(CartContext)
     return (
@@ -14,9 +15,9 @@ const Header = (props) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse as={Row} id="basic-navbar-nav" className='mx-0'>
               <Nav as={Col}  className="mx-0 fs-5 ">
-                <Nav.Link href="#home" className='text-light '>Home</Nav.Link>
-                <Nav.Link href="#store" className='text-light'>Store</Nav.Link>
-                <Nav.Link href="#about" className='text-light me-auto'>About</Nav.Link>
+                <Link to="/" className='text-light mx-2 link-underline-dark' >Home</Link>
+                <Link to="/" className='text-light mx-2 link-underline-dark'>Store</Link>
+                <Link to="/about" className='text-light ms-2 me-auto link-underline-dark'>About</Link>
               </Nav>
                 <Button onClick={props.show} as={Col} xs={1} variant='secondary' className='text-white fw-medium ms-auto me-0'>Cart {cartCtx.amount}</Button>
             </Navbar.Collapse>
