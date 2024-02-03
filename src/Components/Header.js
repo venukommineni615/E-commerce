@@ -30,7 +30,13 @@ const Header = (props) => {
       fontWeight: isActive ? "bold" : ""
     };
   }}
-   className='text-light ms-2 me-auto link-underline-dark'>About</NavLink>
+   className='text-light ms-2  link-underline-dark'>About</NavLink>
+                <NavLink to="/contact" style={({ isActive}) => {
+    return {
+      fontWeight: isActive ? "bold" : ""
+    };
+  }}
+   className='text-light ms-2 me-auto link-underline-dark'>Contact</NavLink>
               </Nav>
                 <Button onClick={props.show} as={Col} xs={1} variant='secondary' className='text-white fw-medium ms-auto me-0'>Cart {cartCtx.amount}</Button>
             </Navbar.Collapse>
