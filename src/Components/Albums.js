@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import {Card, Container, Row, Col, Button, Stack} from 'react-bootstrap'
 import CartContext from '../store/CartContext'
+import { NavLink } from 'react-router-dom'
 const productsArr = [
 
     {
@@ -67,7 +68,10 @@ const Albums = () => {
                 return<Col xs={6} key={item.title} className='mb-4 p-4'>
                     <Card className='mx-auto bg-transparent' style={{ width: '18rem' }}>
                     <Card.Header className='text-center fs-5 fw-medium bg-transparent'>{item.title}</Card.Header>
-                        <Card.Img variant="top" src={item.imageUrl} className="rounded-0" ></Card.Img>
+                        <NavLink to={`/contact/${item.title}`}>
+                                <Card.Img variant="top" src={item.imageUrl} className="rounded-0" ></Card.Img>
+
+                        </NavLink>
                         <Card.Body as={Stack} direction="horizontal" gap={3}>
                             <Card.Text className=''>$ {item.price}</Card.Text>
                             <Button variant="info" className='ms-auto' onClick={addItem.bind(null,item)}>Add to cart</Button>
