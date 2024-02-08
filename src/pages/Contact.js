@@ -1,8 +1,9 @@
 import React, {useRef} from 'react'
 import Form from 'react-bootstrap/Form'
 import { Button, Container, Nav } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 const Contact = () => {
+  const navigate=useNavigate()
     const email=useRef()
     const password=useRef()
     const number=useRef()
@@ -32,7 +33,7 @@ const Contact = () => {
     <Container fluid className='p-0'>
   <Nav className='bg-dark p-3 m-0'>
     <h3 className='text-white'>Contact details</h3>
-    <Link to='..' relative='path' className='text-center ms-auto text-decoration-none text-white bg-secondary p-2 border border-1 border-dark-subtle rounded'>Go back</Link>
+    <Link onClick={()=>{navigate(-1)}} className='text-center ms-auto text-decoration-none text-white bg-secondary p-2 border border-1 border-dark-subtle rounded'>Go back</Link>
   </Nav>
       <Form className='bg-dark-subtle w-50 mt-4 border rounded flex-column p-3 mx-auto' onSubmit={addContact}>
         <Form.Group className="mb-3" controlId="formGroupEmail">

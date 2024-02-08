@@ -48,10 +48,13 @@ const productsArr = [
 
 const Product = () => {
     const params=useParams()
+    console.log(params)
     const productFilter=productsArr.filter((item)=>{
-        return item.title===params.title
+      
+        return item.title===params.productId
     })
     const item=productFilter[0]
+    
   return (
    <Container fluid className='bg-secondary p-4 vh-100'>
    <Carousel className='w-25 mx-auto'>

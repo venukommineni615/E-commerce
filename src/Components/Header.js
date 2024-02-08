@@ -28,7 +28,7 @@ const Header = (props) => {
             >
               Home
             </NavLink>
-            <NavLink
+           {authCtx.isLoggedin && <NavLink
               to="/store"
               className="text-light mx-2 link-underline-dark"
               style={({ isActive }) => {
@@ -38,7 +38,7 @@ const Header = (props) => {
               }}
             >
               Store
-            </NavLink>
+            </NavLink>}
             <NavLink
               to="/about"
               style={({ isActive }) => {
