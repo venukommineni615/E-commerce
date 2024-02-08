@@ -25,6 +25,7 @@ const productsArr = [
     },
     
     {
+       
     
     title: 'Yellow and Black Colors',
     
@@ -68,7 +69,7 @@ const Albums = () => {
                 return<Col xs={6} key={item.title} className='mb-4 p-4'>
                     <Card className='mx-auto bg-transparent' style={{ width: '18rem' }}>
                     <Card.Header className='text-center fs-5 fw-medium bg-transparent'>{item.title}</Card.Header>
-                        <NavLink to={`/contact/${item.title}`}>
+                        <NavLink to={`/product/${item.title}`}>
                                 <Card.Img variant="top" src={item.imageUrl} className="rounded-0" ></Card.Img>
 
                         </NavLink>
