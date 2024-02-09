@@ -37,7 +37,7 @@ function Login() {
               throw new Error(data.error.message)
             }
             else{
-              authCtx.logIn(data.idToken)
+              authCtx.logIn(data.idToken,email.current.value)
               navigate('/store')
             }
           
