@@ -2,6 +2,7 @@ import React, {useContext, useRef, useState} from 'react'
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Spinner } from 'react-bootstrap';
 import Header from '../Components/Header';
 import { AuthContext } from '../store/AuthProvider';
 import { useNavigate } from 'react-router-dom';
@@ -62,7 +63,9 @@ function Login() {
         <Form.Label className='text-white'>Password</Form.Label>
         <Form.Control ref={password} type="password" placeholder="Password" />
       </Form.Group>
-      {isLoading && <p className='text-white'>sending the request...</p>}
+      {isLoading && <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>}
       {!isLoading && <Button variant="dark" type="submit">
         Login
       </Button>}

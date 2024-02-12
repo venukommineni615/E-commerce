@@ -16,9 +16,7 @@ const AuthProvider = (props) => {
             setToken(JSON.parse(authToken))
             setLoggedIn(true)
             setEmail(JSON.parse(localStorage.getItem('email')))
-            setTimeout(()=>{
-                localStorage.removeItem('token')
-            },1000*60*5)
+           
         }
     },[])
 
@@ -32,10 +30,7 @@ const AuthProvider = (props) => {
         localStorage.setItem("email",JSON.stringify(myemail))
         setLoggedIn(true)
         setEmail(myemail)
-            setTimeout(()=>{
-                localStorage.removeItem('token')
-                localStorage.removeItem('email')
-            },1000*60*5)
+           
     }
     const logOut=()=>{
         setToken(null)

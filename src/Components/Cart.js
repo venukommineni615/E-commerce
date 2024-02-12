@@ -44,6 +44,7 @@ import CartContext from '../store/CartContext'
     
 const Cart = (props) => {
     const cartCtx=useContext(CartContext)
+    console.log(cartCtx.items)
 
   return (
     <>
@@ -62,7 +63,7 @@ const Cart = (props) => {
       </thead>
       <tbody>
         {cartCtx.items.map((item)=>{
-          console.log("quantity",item.quantity)
+          // console.log("quantity",item.quantity)
             return (
                 <tr key={item.title}>
           <td ><Image src={item.imageUrl} thumbnail style={{ width: '5rem', height: '5rem' }}/> {item.title}</td>

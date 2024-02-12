@@ -39,7 +39,7 @@ const productsArr = [
 const Albums = () => {
   const authCtx = useContext(AuthContext);
   const cartCtx = useContext(CartContext);
-  console.log(authCtx.email)
+  // console.log(authCtx.email)
   const addItem = async (item) => {
     const elements=cartCtx.items.filter((ele)=>{
       return ele.title===item.title
@@ -47,7 +47,7 @@ const Albums = () => {
     console.log(cartCtx.items,elements,item)
     if(elements.length===0){
       const res = await fetch(
-        `https://crudcrud.com/api/5c60ec38c2754f399cfd612dfef77af6/${authCtx.email}`,
+        `https://crudcrud.com/api/13c63c5ccc424fb59e2b6c4a0fdda7fb/${authCtx.email}`,
         {
           method: "POST",
           body: JSON.stringify({...item,quantity:1}),
@@ -57,7 +57,7 @@ const Albums = () => {
         }
       );
       const data= await res.json()
-      console.log(data._id)
+      // console.log(data._id)
       alert("ADDED THE ITEM TO THE CART")
       cartCtx.addItem({
         ...item,
@@ -65,7 +65,7 @@ const Albums = () => {
         id:data._id
       });
     }else{
-     try{ const res=await fetch(`https://crudcrud.com/api/5c60ec38c2754f399cfd612dfef77af6/${authCtx.email}/${elements[0].id}`,
+     try{ const res=await fetch(`https://crudcrud.com/api/13c63c5ccc424fb59e2b6c4a0fdda7fb/${authCtx.email}/${elements[0].id}`,
       {
         method:'PUT',
         body:JSON.stringify({...item,quantity:elements[0].quantity+1}),
