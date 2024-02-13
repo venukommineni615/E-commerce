@@ -47,7 +47,7 @@ const Albums = () => {
     console.log(cartCtx.items,elements,item)
     if(elements.length===0){
       const res = await fetch(
-        `https://crudcrud.com/api/13c63c5ccc424fb59e2b6c4a0fdda7fb/${authCtx.email}`,
+        `https://crudcrud.com/api/dc973eaa1f6140889c74f57801847f90/${authCtx.email}`,
         {
           method: "POST",
           body: JSON.stringify({...item,quantity:1}),
@@ -62,10 +62,10 @@ const Albums = () => {
       cartCtx.addItem({
         ...item,
         quantity:1,
-        id:data._id
+        _id:data._id
       });
     }else{
-     try{ const res=await fetch(`https://crudcrud.com/api/13c63c5ccc424fb59e2b6c4a0fdda7fb/${authCtx.email}/${elements[0].id}`,
+     try{ const res=await fetch(`https://crudcrud.com/api/dc973eaa1f6140889c74f57801847f90/${authCtx.email}/${elements[0]._id}`,
       {
         method:'PUT',
         body:JSON.stringify({...item,quantity:elements[0].quantity+1}),
@@ -79,7 +79,7 @@ const Albums = () => {
       // console.log(data, "updated")
       cartCtx.addItem({
         ...item,
-        id:elements[0].id
+        _id:elements[0]._id
       });
     }catch(error){
       console.error('error',error)

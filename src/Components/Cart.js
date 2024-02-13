@@ -1,6 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Offcanvas, Table, Image, Button } from 'react-bootstrap'
 import CartContext from '../store/CartContext'
+import { AuthContext } from '../store/AuthProvider'
+import { useFetch } from '../custom-hooks/useFetch';
 // const cartElements = [
 
 //     {
@@ -44,6 +46,18 @@ import CartContext from '../store/CartContext'
     
 const Cart = (props) => {
     const cartCtx=useContext(CartContext)
+    const authCtx=useContext(AuthContext)
+  const {data}=useFetch(`https://crudcrud.com/api/dc973eaa1f6140889c74f57801847f90/${authCtx.email}`)
+
+  useEffect(() => {
+      if (data) {
+        data.forEach((item) => {
+          console.log("item ",item);
+
+          cartCtx.addItem(item)
+        });
+      }
+    }, [data]);
     console.log(cartCtx.items)
 
   return (

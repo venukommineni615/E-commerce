@@ -1,7 +1,7 @@
-import React, { useContext, useReducer, useEffect } from 'react'
+import React, {  useReducer,  } from 'react'
 import CartContext from './CartContext'
-import { AuthContext } from './AuthProvider'
-import {useFetch} from '../custom-hooks/useFetch'
+// import { AuthContext } from './AuthProvider'
+// import {useFetch} from '../custom-hooks/useFetch'
 
 const reducerfun=(state,action)=>{
     switch (action.type) {
@@ -9,7 +9,7 @@ const reducerfun=(state,action)=>{
             const indexExisted=state.items.findIndex((item)=>{
                 return item.title===action.item.title
             })
-           console.log('add func')
+        //    console.log('add func')
             if(indexExisted===-1){
                 console.log("initial",action.item.quantity)
                 const newItem={...action.item,quantity:action.item.quantity}
@@ -31,18 +31,10 @@ const CartProvider = (props) => {
     
     const initialState={items:[],amount:0}
     const [cartItems,dispatchCartItems]=useReducer(reducerfun,initialState)
-    const authCtx=useContext(AuthContext)
-    const {data}=useFetch(`https://crudcrud.com/api/13c63c5ccc424fb59e2b6c4a0fdda7fb/${authCtx.email}`)
-  
-    useEffect(() => {
-        if (data) {
-          data.forEach((item) => {
-            console.log(item);
-            dispatchCartItems({ type: 'ADD', item: item });
-          });
-        }
-      }, [data]);
+    // const authCtx=useContext(AuthContext)
+   
     const addItem=(item)=>{
+        console.log("addItem is getting called")
         dispatchCartItems({type:"ADD",item:item})
     }
 
